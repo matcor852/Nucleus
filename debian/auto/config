@@ -1,0 +1,38 @@
+#!/bin/sh
+
+set -e
+
+lb config noauto \
+	--mode "debian" \
+    --system "live" \
+    --distribution "bookworm" \
+    --architecture "amd64" \
+    --archive-areas "main contrib non-free non-free-firmware" \
+    --security "true" \
+    --updates "true" \
+    --backports "false" \
+    --binary-image "iso" \
+    --bootloaders "syslinux grub-efi" \
+    --apt-indices "true" \
+    --apt-recommends "true" \
+    --apt-secure "true" \
+    --apt-source-archives "false" \
+    --linux-package "linux-image linux-headers" \
+    --debian-installer "live" \
+    --debian-installer-distribution "bookworm" \
+    --debian-installer-gui "true" \
+    --firmware-binary "true" \
+    --firmware-chroot "true" \
+    --iso-publisher "matcor852@gmail.com" \
+    --memtest "none" \
+    --win32-loader "false" \
+    --utc-time "true" \
+    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr" \
+    --bootappend-install "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr" \
+    --clean \
+    --debug \
+    --verbose \
+    --color \
+    --source "false" \
+    "${@}"
+
