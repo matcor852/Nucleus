@@ -13,6 +13,7 @@ lb config noauto \
     --backports "false" \
     --binary-image "iso" \
     --bootloaders "syslinux grub-efi" \
+    --swap-file-size "2048" \
     --apt-indices "true" \
     --apt-recommends "true" \
     --apt-secure "true" \
@@ -27,8 +28,8 @@ lb config noauto \
     --memtest "none" \
     --win32-loader "false" \
     --utc-time "true" \
-    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr" \
-    --bootappend-install "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr" \
+    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin username=matthieu toram swap=true" \
+    --bootappend-install "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin swap=true" \
     --clean \
     --debug \
     --verbose \
