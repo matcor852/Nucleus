@@ -1,10 +1,17 @@
 
-# Locale and keyboard layout
+sudo
+apt
 console-setup
 psmisc
-tree
-
-
-
-
+pulseaudio
+git
+build-essential
+make
+cmake
+curl
+wget
+gparted
+network-manager
+network-manager-gnome
+numlockx
 

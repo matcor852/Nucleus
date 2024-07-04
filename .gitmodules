@@ -1,0 +1,3 @@
+[submodule "debian/config/includes.chroot/etc/skel/.config/oh-my-zsh"]
+	path = debian/config/includes.chroot/etc/skel/.config/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git

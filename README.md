@@ -1,10 +1,10 @@
 
-# ISO
+# NucleusOS
 
 ```bash
-cd debian
-lb clean
-lb config
-qemu-system-x86_64 -enable-kvm -cpu host -m 2048 -smp 4 -drive media=cdrom,format=raw,file=live-image-amd64.iso -boot d
+sudo apt install -y live-build
+git clone --recurse-submodules --remote-submodules git@github.com:matcor852/Nucleus.git Nucleus
+cd Nucleus/debian
+sudo ./start.sh
 ```
 

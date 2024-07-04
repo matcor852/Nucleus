@@ -5,6 +5,7 @@ set -e
 lb config noauto \
 	--mode "debian" \
     --system "live" \
+    --image-name "nucleus" \
     --distribution "bookworm" \
     --architecture "amd64" \
     --archive-areas "main contrib non-free non-free-firmware" \
@@ -28,7 +29,7 @@ lb config noauto \
     --memtest "none" \
     --win32-loader "false" \
     --utc-time "true" \
-    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin username=matthieu toram swap=true" \
+    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin username=matthieu toram swap=true quiet" \
     --bootappend-install "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin swap=true" \
     --clean \
     --debug \

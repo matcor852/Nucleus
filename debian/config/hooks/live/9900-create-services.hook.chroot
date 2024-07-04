@@ -1,0 +1,10 @@
+#!/bin/sh
+
+for f in /etc/systemd/system/*.service; do
+    [ -f "$f" ] || break
+    dst="$(echo /etc/systemd/system/multi-user.target.wants/"$(basename "$f")")"
+    [ ! -f "$dst" ] && ln -s "$f" "$dst"
+done
+
+exit 0
+

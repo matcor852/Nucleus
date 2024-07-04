@@ -1,2 +1,10 @@
 .build/
+build.log
 cache/
+nucleus_test.img
+binary*
+chroot*
+config/bootstrap
+config/common
+config/source
+nucleus-*
