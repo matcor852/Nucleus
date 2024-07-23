@@ -11,4 +11,5 @@ zsh
 command-not-found
 xsel
 bc
+rofi
 
