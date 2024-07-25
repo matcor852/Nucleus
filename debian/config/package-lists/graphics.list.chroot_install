@@ -7,4 +7,6 @@ xfce4-screenshooter
 picom
 fonts-font-awesome
 fonts-liberation
+rofi
+polybar
 

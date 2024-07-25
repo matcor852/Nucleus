@@ -4,6 +4,11 @@ apt
 console-setup
 psmisc
 pulseaudio
+pavucontrol
+bluetooth
+bluez-firmware
+firmware-iwlwifi
+blueman
 git
 build-essential
 make
