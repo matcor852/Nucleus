@@ -4,5 +4,5 @@ set -e
 
 npm install --global yarn > /dev/null
 
-echo "Installed yarn."
+echo "\033[0;32mInstalled yarn.\033[0m"
 

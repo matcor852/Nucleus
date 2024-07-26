@@ -4,5 +4,5 @@ curl -fLo ~/.config/vim/autoload/plug.vim --create-dirs https://raw.githubuserco
 vim -es -u ~/.vimrc -i NONE -c "PlugInstall" -c "qa"
 #make -C ~/.config/vim/plugged/vim-hexokinase hexokinase
 
-echo "Installed vim plugins."
+echo "\033[0;32mInstalled vim plugins.\033[0m"
 
