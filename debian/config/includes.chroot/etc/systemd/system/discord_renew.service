@@ -1,0 +1,16 @@
+[Unit]
+Description=Discord Version Renewer
+Wants=network-online.target
+After=network.target network-online.target
+StartLimitBurst=50
+
+[Service]
+Type=simple
+Restart=on-failure
+ExecStart=/home/matthieu/.config/discord/discord_renew.sh
+User=root
+
+[Install]
+WantedBy=multi-user.target
+
+
