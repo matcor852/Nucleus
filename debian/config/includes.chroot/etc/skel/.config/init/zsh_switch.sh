@@ -9,5 +9,5 @@ if [ "$(tail -n 1 ~/.bashrc)" != "exec zsh" ]; then
     echo -e "\nexec zsh" >> ~/.bashrc
 fi
 
-echo "\033[0;32mSet ZSH default.\033[0m"
+echo -e "\033[0;32mSet ZSH default.\033[0m"
 
