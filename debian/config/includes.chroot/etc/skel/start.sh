@@ -21,6 +21,9 @@ ssh-keygen -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -N ''
 xsel -b < ~/.ssh/id_ed25519.pub
 echo -e "\033[0;32mSSH public key saved to clipboard.\033[0m"
 
+sudo ln -s /home/matthieu/.vim /root/.vim
+sudo ln -s /home/matthieu/.vimrc /root/.vimrc
+
 # Init cleanup
 rm -rf ~/.config/init
 rm README.md

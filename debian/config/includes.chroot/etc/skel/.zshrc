@@ -137,8 +137,9 @@ precmd() {
 
 configure_prompt() {
 	PS='•'
+    [ ! "$(ps -o comm= $PPID)" = "su" ] && ender='$ ' || ender='%B%F{red}~💀%f%b'
 	[ -z "$elapsed" ] && elapsed="0.00s"
-	PROMPT=$'\r%F{cyan}┌──(%f%F{%(?.green.red)}%B%?%b%f%F{blue}%B$PS%b%f%F{white}${elapsed}%f%F{cyan})─${env_br}[%f%F{white}%~%f%F{cyan}]\n└─%f%F{blue}$%f '
+	PROMPT=$'\r%F{cyan}┌──(%f%F{%(?.green.red)}%B%?%b%f%F{blue}%B$PS%b%f%F{white}${elapsed}%f%F{cyan})─${env_br}[%f%F{white}%~%f%F{cyan}]\n└─%f%F{blue}$ender%f'
     #RPROMPT='%F{37}%*%f'
 }
 
@@ -213,6 +214,7 @@ alias evimrc='vim ~/.vimrc'
 #alias valgrind='valgrind --leak-check=full --track-fds=yes'
 alias python='python3'
 alias gs='git status'
+alias su='su -s "$(which zsh)"'
 
 
 activate() {
