@@ -29,3 +29,5 @@ rm -rf ~/.config/init
 rm README.md
 rm -- "$0"
 
+sudo tailscale up --ssh
+
