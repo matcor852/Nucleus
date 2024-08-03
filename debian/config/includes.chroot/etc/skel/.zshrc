@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.config/oh-my-zsh"
+export ZSH="/home/matthieu/.config/oh-my-zsh"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -44,6 +44,8 @@ plugins=(
 	zsh-syntax-highlighting
 )
 
+# prevent su complaining about insecure dirs
+export ZSH_DISABLE_COMPFIX='true'
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -137,9 +139,10 @@ precmd() {
 
 configure_prompt() {
 	PS='•'
-    [ ! "$(ps -o comm= $PPID)" = "su" ] && ender='$ ' || ender='%B%F{red}~💀%f%b'
 	[ -z "$elapsed" ] && elapsed="0.00s"
-	PROMPT=$'\r%F{cyan}┌──(%f%F{%(?.green.red)}%B%?%b%f%F{blue}%B$PS%b%f%F{white}${elapsed}%f%F{cyan})─${env_br}[%f%F{white}%~%f%F{cyan}]\n└─%f%F{blue}$ender%f'
+    ps1=$'\r%F{cyan}┌──(%f%F{%(?.green.red)}%B%?%b%f%F{blue}%B$PS%b%f%F{white}${elapsed}%f%F{cyan})─${env_br}[%f%F{white}%~%f%F{cyan}]\n└─%f%F{blue}$ %f'
+    su_ps1=$'\r%F{red}┌──(%f%F{%(?.green.red)}%B%?%b%f%F{blue}%B$PS%b%f%F{white}${elapsed}%f%F{red})─${env_br}[%f%F{white}%~%f%F{red}]\n└─%f%F{blue}%B%F{red}💀%f%b%f'
+    [ "$EUID" -eq 0 ] && PROMPT="$su_ps1" || PROMPT="$ps1"
     #RPROMPT='%F{37}%*%f'
 }
 
@@ -214,7 +217,7 @@ alias evimrc='vim ~/.vimrc'
 #alias valgrind='valgrind --leak-check=full --track-fds=yes'
 alias python='python3'
 alias gs='git status'
-alias su='su -s "$(which zsh)"'
+alias su='sudo -i'
 
 
 activate() {
@@ -263,7 +266,7 @@ pushtag() {
     git push origin "$1";
 }
 
-export PGDATA="$HOME/postgres_data"
+export PGDATA="$HOME/.postgres_data"
 export PGHOST="/tmp"
 export PATH=$PATH:/usr/lib/postgresql/
 alias initdb="/usr/lib/postgresql/15/bin/initdb"

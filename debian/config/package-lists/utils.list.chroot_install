@@ -13,4 +13,6 @@ xsel
 bc
 openvpn
 network-manager-openvpn-gnome
+grub-customizer
+firefox-esr firefox-esr-l10n-fr
 

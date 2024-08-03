@@ -10,24 +10,36 @@ wget -q --spider http://google.com
 [ "$?" -ne 0 ] && echo "No internet access." && exit 2
 
 HOME=/home/matthieu
+spin='◐◓◑◒'
 
 # init scripts in .config/init/*.sh
-for init_script in .config/init/*.sh; do
-    bash "$init_script"
+for init_script in ~/.config/init/*.sh; do
+    echo -e "\n\n================================ $(basename $init_script .sh) ================================\n" >> setup.log
+    bash "$init_script" >> setup.log 2>&1 &
+    pid=$!
+    i=0
+    while kill -0 $pid 2>/dev/null
+    do
+        i=$(( (i+1) %${#spin} ))
+        printf "\r$(basename $init_script .sh): ${spin:$i:1} "
+        sleep .2
+    done
+    echo -en "\r$(basename $init_script .sh): "
+    if [ "$?" -ne 0 ]; then
+        echo -e "\033[0;31mKO\033[0m"
+    else
+        echo -e "\033[0;32mOK\033[0m"
+        rm "$init_script"
+    fi
 done
 
-# SSH config
-ssh-keygen -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -N ''
-xsel -b < ~/.ssh/id_ed25519.pub
-echo -e "\033[0;32mSSH public key saved to clipboard.\033[0m"
+if [ -z "$(ls -A ~/.config/init)" ]; then
+    rm -rf ~/.config/init
+    rm README.md
+    rm -- "$0"
+    rm setup.log
+fi
 
-sudo ln -s /home/matthieu/.vim /root/.vim
-sudo ln -s /home/matthieu/.vimrc /root/.vimrc
-
-# Init cleanup
-rm -rf ~/.config/init
-rm README.md
-rm -- "$0"
-
-sudo tailscale up --ssh
+i3-msg restart > /dev/null 2>&1
+# sudo tailscale up --ssh
 
