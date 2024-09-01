@@ -22,4 +22,5 @@ gparted
 network-manager
 network-manager-gnome
 numlockx
+libglib2.0-bin
 

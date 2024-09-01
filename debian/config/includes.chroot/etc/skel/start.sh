@@ -37,7 +37,7 @@ if [ -z "$(ls -A ~/.config/init)" ]; then
     rm -rf ~/.config/init
     rm README.md
     rm -- "$0"
-    rm setup.log
+    # rm setup.log
 fi
 
 i3-msg restart > /dev/null 2>&1
