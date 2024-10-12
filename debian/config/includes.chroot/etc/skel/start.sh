@@ -24,8 +24,10 @@ for init_script in ~/.config/init/*.sh; do
         printf "\r$(basename $init_script .sh): ${spin:$i:1} "
         sleep .2
     done
+    wait "$pid"
+    exc="$?"
     echo -en "\r$(basename $init_script .sh): "
-    if [ "$?" -ne 0 ]; then
+    if [ "$exc" -ne 0 ]; then
         echo -e "\033[0;31mKO\033[0m"
     else
         echo -e "\033[0;32mOK\033[0m"

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -e
+#set -e
 
-curl -fsSL https://tailscale.com/install.sh | sudo sh
+curl -fsSL https://tailscale.com/install.sh | sudo sh || (>&2 echo "Failed install"; exit 1)
 

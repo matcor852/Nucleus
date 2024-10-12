@@ -1,6 +1,7 @@
 #!/bin/sh
 
-set -e
+#set -e
+trap "exit 1" ERR
 
 sudo apt-get install wget gpg
 wget -qO- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > packages.microsoft.gpg
