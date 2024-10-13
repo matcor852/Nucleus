@@ -1,7 +1,7 @@
 [core]
 	editor = vim
 [user]
-	email = matthieu.correia@epita.fr
-	name = Matthieu Correia
+	email = <user.email@email.com>
+	name = Nucleus User
 [push]
 	autosetupremote = true

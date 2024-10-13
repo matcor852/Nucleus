@@ -9,7 +9,7 @@ fi
 wget -q --spider http://google.com
 [ "$?" -ne 0 ] && echo "No internet access." && exit 2
 
-HOME=/home/matthieu
+HOME=/home/nucleuser
 spin='◐◓◑◒'
 
 # init scripts in .config/init/*.sh

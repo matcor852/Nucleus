@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/matthieu/.config/oh-my-zsh"
+export ZSH="/home/nucleuser/.config/oh-my-zsh"
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -272,9 +272,9 @@ export PATH=$PATH:/usr/lib/postgresql/
 alias initdb="/usr/lib/postgresql/15/bin/initdb"
 alias postgres="/usr/lib/postgresql/15/bin/postgres"
 
-alias java="/home/matthieu/.jdks/corretto-17.0.11/bin/java"
-export JAVA_HOME="/home/matthieu/.jdks/corretto-17.0.11"
-alias mvn="/home/matthieu/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/maven/lib/maven3/bin/mvn"
+# alias java="/home/nucleuser/.jdks/corretto-17.0.11/bin/java"
+# export JAVA_HOME="/home/nucleuser/.jdks/corretto-17.0.11"
+# alias mvn="/home/nucleuser/.local/share/JetBrains/Toolbox/apps/intellij-idea-ultimate/plugins/maven/lib/maven3/bin/mvn"
 
 export PYTHONDONTWRITEBYTECODE=1
 

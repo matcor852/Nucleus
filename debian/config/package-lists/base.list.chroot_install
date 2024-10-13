@@ -24,4 +24,5 @@ network-manager-gnome
 numlockx
 libglib2.0-bin
 plymouth
+dkms
 

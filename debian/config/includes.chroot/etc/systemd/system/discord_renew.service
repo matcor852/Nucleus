@@ -7,7 +7,7 @@ StartLimitBurst=50
 [Service]
 Type=simple
 Restart=on-failure
-ExecStart=/home/matthieu/.config/discord/discord_renew.sh
+ExecStart=/home/nucleuser/.config/discord/discord_renew.sh
 User=root
 
 [Install]

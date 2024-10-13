@@ -29,7 +29,7 @@ lb config noauto \
     --memtest "none" \
     --win32-loader "false" \
     --utc-time "true" \
-    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin username=matthieu toram swap=false quiet hostname=Nucleus" \
+    --bootappend-live "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin username=nucleuser toram swap=false quiet hostname=Nucleus" \
     --bootappend-install "boot=live components locales=en_US.UTF-8 keyboard-layouts=fr autologin swap=false" \
     --clean \
     --debug \
