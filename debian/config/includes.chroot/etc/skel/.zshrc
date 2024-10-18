@@ -269,8 +269,8 @@ pushtag() {
 export PGDATA="$HOME/.postgres_data"
 export PGHOST="/tmp"
 export PATH=$PATH:/usr/lib/postgresql/
-alias initdb="/usr/lib/postgresql/15/bin/initdb"
-alias postgres="/usr/lib/postgresql/15/bin/postgres"
+alias initdb="/usr/lib/postgresql/*/bin/initdb"
+alias postgres="/usr/lib/postgresql/*/bin/postgres"
 
 # alias java="/home/nucleuser/.jdks/corretto-17.0.11/bin/java"
 # export JAVA_HOME="/home/nucleuser/.jdks/corretto-17.0.11"

@@ -18,4 +18,8 @@ grub-customizer
 firefox-esr firefox-esr-l10n-fr
 docker
 docker-compose
+tldr
+gcovr
+postgresql
+postgresql-contrib
 

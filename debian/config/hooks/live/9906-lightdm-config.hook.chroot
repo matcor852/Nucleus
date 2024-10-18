@@ -4,6 +4,11 @@ set -e
 
 sed -i "s/^.*greeter-hide-users=.*$/greeter-hide-users=false/" /etc/lightdm/lightdm.conf
 sed -i "s/^.*greeter-setup-script=.*$/greeter-setup-script=\/usr\/bin\/numlockx on/" /etc/lightdm/lightdm.conf
+sed -i "s/^#background=.*$/background=\/usr\/share\/wallpapers\/atomic.png/" /etc/lightdm/lightdm-gtk-greeter.conf || (>&2 echo "Failed sed 1"; exit 1)
+sed -i "s/^#theme-name=.*$/theme-name=Skeuos-Blue-Dark/" /etc/lightdm/lightdm-gtk-greeter.conf || (>&2 echo "Failed sed 2"; exit 1)
+sed -i "s/^#icon-theme-name=.*$/icon-theme-name=Skeuos-Blue-Dark/" /etc/lightdm/lightdm-gtk-greeter.conf || (>&2 echo "Failed sed 3"; exit 1)
+sed -i "s/^#xft-antialias=.*$/xft-antialias=true/" /etc/lightdm/lightdm-gtk-greeter.conf || (>&2 echo "Failed sed 4"; exit 1)
+sed -i "s/^#indicators=.*$/indicators=~host;~spacer;~clock;~spacer;~session;~power/" /etc/lightdm/lightdm-gtk-greeter.conf || (>&2 echo "Failed sed 5"; exit 1)
 
 echo "Updated LightDM config."
 

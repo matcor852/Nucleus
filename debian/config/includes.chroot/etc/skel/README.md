@@ -2,5 +2,5 @@
 # INIT
 
 ```bash
-sudo ./start.sh && exec zsh
+sudo --preserve-env=USER ./finalize.sh && exec zsh
 ```
