@@ -22,4 +22,5 @@ tldr
 gcovr
 postgresql
 postgresql-contrib
+brightnessctl
 
