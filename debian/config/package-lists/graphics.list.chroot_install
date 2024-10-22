@@ -4,6 +4,7 @@ lightdm
 x11-xserver-utils
 xfce4-terminal
 xfce4-screenshooter
+xfce4-clipman
 xfce4-settings
 picom
 rofi

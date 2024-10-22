@@ -225,6 +225,7 @@ exec_always --no-startup-id notify-send "$PATH"
 exec_always --no-startup-id notify-send "$XDG_DATA_DIRS"
 exec_always --no-startup-id picom --experimental-backends -b
 exec_always --no-startup-id feh --bg-fill ~/.config/Wallpapers/planets-space.png
+exec_always --no-startup-id xfce4-clipman &
 
 
 # Start i3bar to display a workspace bar (plus the system information i3status
