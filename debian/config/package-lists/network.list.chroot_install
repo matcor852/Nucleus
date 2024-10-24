@@ -1,6 +1,6 @@
 
 curl
-dig
+dnsutils
 network-manager
 network-manager-gnome
 network-manager-openvpn-gnome
