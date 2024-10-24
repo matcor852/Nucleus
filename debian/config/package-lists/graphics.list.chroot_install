@@ -1,13 +1,15 @@
 
+blueman
+gparted
 i3
 lightdm
-x11-xserver-utils
-xfce4-terminal
-xfce4-screenshooter
-xfce4-clipman
-xfce4-settings
 picom
-rofi
+plymouth
 polybar
+rofi
 thunar
-
+x11-xserver-utils
+xfce4-clipman
+xfce4-screenshooter
+xfce4-settings
+xfce4-terminal

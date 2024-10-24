@@ -1,26 +1,16 @@
 
-tree
-feh
-vim
-bear
 bat
-htop
-btop
-neofetch
-gedit
-zsh
-command-not-found
-xsel
 bc
-openvpn
-network-manager-openvpn-gnome
-grub-customizer
+btop
+command-not-found
+feh
 firefox-esr firefox-esr-l10n-fr
-docker
-docker-compose
+gedit
+grub-customizer
+htop
+neofetch
 tldr
-gcovr
-postgresql
-postgresql-contrib
-brightnessctl
-
+tree
+vim
+xsel
+zsh

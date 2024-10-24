@@ -1,14 +1,15 @@
-fontconfig-config
+
 fontconfig
+fontconfig-config
+fonts-dejavu
 fonts-dejavu-core
 fonts-dejavu-extra
-fonts-dejavu
 fonts-droid-fallback
 fonts-font-awesome
 fonts-glyphicons-halflings
 fonts-lato
-fonts-liberation2
 fonts-liberation
+fonts-liberation2
 fonts-lyx
 fonts-mathjax
 fonts-noto-mono
@@ -18,9 +19,9 @@ fonts-symbola
 fonts-urw-base35
 gsfonts
 libfont-afm-perl
-libfontconfig-dev
-libfontconfig1-dev
 libfontconfig1
+libfontconfig1-dev
+libfontconfig-dev
 libfontembed1
 libfontenc1
 libxfont2
@@ -33,4 +34,3 @@ xfonts-base
 xfonts-encodings
 xfonts-scalable
 xfonts-utils
-
