@@ -20,6 +20,8 @@ nnoremap <silent> <expr> <C-t> g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : buf
 
 
 " Coc:
+" disable Coc on *.sh files because of memory leak (~4Go RAM per file)
+autocmd VimEnter *.sh exe "CocDisable"
 set signcolumn=yes
 function! CheckBackspace() abort
     let col = col('.') - 1
