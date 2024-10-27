@@ -30,7 +30,7 @@ wget -nv -O config/packages.chroot/chrome_all.deb https://dl.google.com/linux/di
 ## Live build
 sudo lb clean
 sudo lb config
-time sudo lb build --quiet
+time sudo lb build
 
 
 ## Check created iso
@@ -42,7 +42,7 @@ fi
 
 if $testing; then
     ## VM testing
-    qemu-img create nucleus_test.img 8G
+    qemu-img create nucleus_test.img 16G
     qemu-system-x86_64 -enable-kvm \
         -smp 4 \
         -m 8192 \

@@ -22,9 +22,9 @@ HOME=/home/"$USER"
 spin='◐◓◑◒'
 running_live=true; grep -q "$(basename $(df ~ | tail -1 | awk '{printf $1;}'))" /proc/partitions && running_live=false
 
+
 # init scripts in .config/init/*.sh
 for init_script in $(ls ~/.config/init/*.sh | sort -g); do
-    $running_live && [[ "$init_script" =~ .*nolive.sh ]] && rm "$init_script" && continue
     echo -e "\n\n================================ $(basename $init_script .sh) ================================\n" >> setup.log
     bash "$init_script" >> setup.log 2>&1 &
     pid=$!
@@ -52,7 +52,7 @@ if [ -z "$(ls -A ~/.config/init)" ]; then
     rm README.md
     rm -- "$0"
     rm setup.log
-    sed -i "s/\[ -f finalize.sh \] && sudo --preserve-env=USER .\/finalize.sh && exec zsh//" .bashrc
+    sed -i -z 's/# START_finalize.*# END_finalize//' .bashrc
 fi
 
 

@@ -32,7 +32,7 @@ jobs:
         run: cd debian && sudo ./start.sh
 
       - name: Checksum
-        run: cd debian && md5sum nucleus-amd64.iso > nucleus.md5
+        run: cd debian && checksum=$(md5sum nucleus-amd64.iso) && echo "$checksum" > nucleus.md5 && sed -i "s/^# <checksum placeholder>$/# $checksum/" CHANGELOG.md
 
       - name: Split
         run: cd debian && split -b 2000m nucleus-amd64.iso nucleus-amd64_part --suffix-length=1 --numeric-suffixes=1 --additional-suffix=.zip
