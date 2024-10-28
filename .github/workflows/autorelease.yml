@@ -3,8 +3,8 @@ name: Releaser
 on:
   workflow_dispatch:
   push:
-    branches:
-      - master
+    tags:
+      - "v*"
 
 permissions:
   contents: write
@@ -32,10 +32,10 @@ jobs:
         run: cd debian && sudo ./start.sh
 
       - name: Checksum
-        run: cd debian && checksum=$(md5sum nucleus-amd64.iso) && echo "$checksum" > nucleus.md5 && sed -i "s/^# <checksum placeholder>$/# $checksum/" CHANGELOG.md
+        run: cd debian && checksum=$(sha256sum nucleus-amd64.iso) && echo "$checksum" > nucleus.sha256 && sed -i "s/<checksum placeholder>/$checksum/g" CHANGELOG.md
 
       - name: Split
-        run: cd debian && split -b 2000m nucleus-amd64.iso nucleus-amd64_part --suffix-length=1 --numeric-suffixes=1 --additional-suffix=.zip
+        run: cd debian && split -b 2000m nucleus-amd64.iso nucleus-amd64_part --suffix-length=1 --numeric-suffixes=1 --additional-suffix=.shard
 
       - name: Version
         id: tag
@@ -44,12 +44,12 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.tag.outputs.release_name }}
+          tag_name: ${{ github.ref || steps.tag.outputs.release_name }}
           name: ${{ steps.tag.outputs.release_name }}
           body_path: debian/CHANGELOG.md
           files: |
             debian/nucleus-amd64_part*
-            debian/nucleus.md5
+            debian/nucleus.sha256
           fail_on_unmatched_files: true
           make_latest: true
 
