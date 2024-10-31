@@ -4,6 +4,7 @@ cmake
 docker
 docker-compose
 gcovr
+gdb
 git
 golang
 make
