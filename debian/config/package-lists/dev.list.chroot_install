@@ -1,5 +1,6 @@
 
 bear
+clang-format
 cmake
 docker
 docker-compose
