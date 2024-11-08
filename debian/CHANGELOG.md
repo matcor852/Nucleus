@@ -1,6 +1,7 @@
 # Changelog
 
 - VirtualBox Guest Additions autoinstall when needed
+- Packages added: arandr, gdb, clang-format, strace, ltrace, libcriterion-dev
 
 &nbsp;
 

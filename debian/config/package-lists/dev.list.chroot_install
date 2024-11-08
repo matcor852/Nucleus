@@ -8,6 +8,7 @@ gcovr
 gdb
 git
 golang
+libcriterion-dev
 make
 nodejs
 npm
