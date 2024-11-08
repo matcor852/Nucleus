@@ -1,6 +1,6 @@
 # Changelog
 
-- Init
+- VirtualBox Guest Additions autoinstall when needed
 
 &nbsp;
 
