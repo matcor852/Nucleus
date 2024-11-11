@@ -54,3 +54,18 @@ Configure position and resolution of external monitors with ARandR, a graphical 
     or
 - `arandr` (from terminal)
 
+## PS1
+The PS1 is configured inside of the `~/.zshrc` file, in the *`configure_prompt()`* function, displaying :
+- Exit code of the last executed command (colored green for success, red otherwise)
+- Execution time in seconds
+- Name of activated virtual environment if any
+- Name of current git branch if any
+- Current working directory
+- When in superuser shell (su), surrounding color switches from cyan to red
+
+![basic PS1](../screenshots/ps1_base.png)
+
+![PS1+git+venv](../screenshots/ps1_branch_venv.png)
+
+![su PS1](../screenshots/ps1_su.png)
+
