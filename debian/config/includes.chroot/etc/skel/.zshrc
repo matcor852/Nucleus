@@ -217,6 +217,7 @@ alias evimrc='vim ~/.vimrc'
 #alias valgrind='valgrind --leak-check=full --track-fds=yes'
 alias python='python3'
 alias gs='git status'
+alias gd='git diff --color-words'
 alias su='sudo -i'
 
 
