@@ -5,8 +5,9 @@ bluez-firmware
 brightnessctl
 build-essential
 console-setup
-cryptsetup
 dkms
+dosfstools
+mtools
 firmware-iwlwifi
 libglib2.0-bin
 numlockx

@@ -99,6 +99,16 @@ if ! $running_live; then
         sed -i "s/$USER/$newu/g" .zshrc
         sed -i "s/$USER/$newu/g" .cwd 2>/dev/null
 
+        # GPG
+        sed -i "s/<name>/$newfn/" ~/.gnupg/genkey
+        sed -i "s/<email>/$newmail/" ~/.gnupg/genkey
+        gpg --batch --gen-key ~/.gnupg/genkey
+        chown -R "$USER" ~/.gnupg
+        chmod 700 ~/.gnupg
+        chmod 600 ~/.gnupg/*
+        chmod 700 ~/.gnupg/*.d
+
+
         sudo sed -i "s/$USER/$newu/g" /etc/systemd/system/discord_renew.service
         sudo chfn -f "$newfn" "$USER"
         sudo su -c "\
