@@ -83,9 +83,14 @@ syntax on
 
 set backup
 set backupdir=~/.config/vim/backup
-silent !mkdir ~/.config/vim/backup > /dev/null 2>&1
+if !isdirectory($HOME . '/.config/vim/backup')
+    call mkdir ($HOME . '/.config/vim/backup', 'p')
+endif
+
 set dir=~/.config/vim/swap
-silent !mkdir ~/.config/vim/swap > /dev/null 2>&1
+if !isdirectory($HOME . '/.config/vim/swap')
+    call mkdir ($HOME . '/.config/vim/swap', 'p')
+endif
 
 colorscheme molokai_up
 
