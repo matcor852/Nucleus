@@ -3,7 +3,6 @@ bear
 clang-format
 cmake
 docker
-docker-compose
 gcovr
 gdb
 git

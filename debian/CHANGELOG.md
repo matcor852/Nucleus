@@ -2,6 +2,7 @@
 
 - VirtualBox Guest Additions autoinstall when needed
 - Packages added: arandr, gdb, clang-format, strace, ltrace, libcriterion-dev
+- Update docker-compose to docker compose v2
 - Support for LVM and LUKS
 - No more implicit location on grub install
 - GPG key creation
