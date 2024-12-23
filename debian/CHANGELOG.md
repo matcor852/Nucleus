@@ -6,6 +6,7 @@
 - Support for LVM and LUKS
 - No more implicit location on grub install
 - GPG key creation
+- Fix for apt upgrade crashing on raspi-firmware error
 
 &nbsp;
 

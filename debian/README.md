@@ -1,6 +1,8 @@
 # NucleusOS - Debian based
 
-
+## Bugs
+If you are getting errors (like apt upgrade failing),
+see scripts in the *~/.config/fixes* folder for possible fixes.
 
 ## I3wm  
 i3wm is a dynamic window manager for X11, designed for efficiency and simplicity.  
