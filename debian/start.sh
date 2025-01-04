@@ -42,6 +42,8 @@ fi
 
 if $testing; then
     ## VM testing
+    dpkg -s qemu-utils | grep -q installed || sudo apt install -y qemu-utils
+    dpkg -s qemu-system-x86 | grep -q installed || sudo apt install -y qemu-system-x86
     qemu-img create nucleus_test.img 16G
     qemu-system-x86_64 -enable-kvm \
         -smp 4 \

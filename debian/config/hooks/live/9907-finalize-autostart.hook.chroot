@@ -8,12 +8,12 @@ fi
 
 for is in $(ls /etc/skel/.config/init/*.sh); do
     # make init script not for live boot exit without error if running live
-    [[ "$is" =~ .*nolive.sh ]] && sed -i '2i grep -q "$(basename $(df ~ | tail -1 | awk '\''{printf $1;}'\''))" /proc/partitions || exit 0' "$is"
+    [[ "$is" =~ .*nolive.sh ]] && sed -i '2i echo "$(df ~ | tail -1 | awk '\''{printf $1;}'\'')" | grep -q overlay && exit 0' "$is"
 done
 
 echo '
 # START_finalize
-grep -q "$(basename $(df ~ | tail -1 | awk '\''{printf $1;}'\''))" /proc/partitions || read -p "Press Enter..."
+echo "$(df ~ | tail -1 | awk '\''{printf $1;}'\'')" | grep -q overlay && read -p "Press Enter..."
 [ -f finalize.sh ] && sudo --preserve-env=USER ./finalize.sh && exec zsh
 # END_finalize
 ' >> /etc/skel/.bashrc

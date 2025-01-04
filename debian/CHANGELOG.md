@@ -1,12 +1,12 @@
 # Changelog
 
 - VirtualBox Guest Additions autoinstall when needed
-- Packages added: arandr, gdb, clang-format, strace, ltrace, libcriterion-dev, jq
+- Packages added: arandr, gdb, clang-format, strace, ltrace, libcriterion-dev, jq, cryptsetup-initramfs
 - Update docker-compose to docker compose v2
-- Support for LVM and LUKS
+- Support for LVM and LUKS (read [Encryption (LUKS)](./README.md) for LUKS fix)
 - No more implicit location on grub install
 - GPG key creation
-- Fix for apt upgrade crashing on raspi-firmware error
+- Fix for `apt upgrade` crashing on raspi-firmware error (observed on kernel update from 6.1.0-26-amd64 to 6.1.0-28-amd64)
 
 &nbsp;
 

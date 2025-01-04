@@ -20,13 +20,13 @@ wget -q --spider http://google.com
 
 HOME=/home/"$USER"
 spin='◐◓◑◒'
-running_live=true; grep -q "$(basename $(df ~ | tail -1 | awk '{printf $1;}'))" /proc/partitions && running_live=false
+running_live=false; echo "$(df ~ | tail -1 | awk '{printf $1;}')" | grep -q overlay && running_live=true
 
 
 # init scripts in .config/init/*.sh
 for init_script in $(ls ~/.config/init/*.sh | sort -g); do
-    echo -e "\n\n================================ $(basename $init_script .sh) ================================\n" >> setup.log
-    bash "$init_script" >> setup.log 2>&1 &
+    echo -e "\n\n================================ $(basename $init_script .sh) ================================\n" >> .finalization.log
+    bash "$init_script" >> .finalization.log 2>&1 &
     pid=$!
     i=0
     while kill -0 $pid 2>/dev/null
@@ -47,11 +47,22 @@ for init_script in $(ls ~/.config/init/*.sh | sort -g); do
 done
 ##
 
-if [ -z "$(ls -A ~/.config/init)" ]; then
+
+ramfs_updated=true
+if grep -q luks /etc/crypttab; then
+    if sudo update-initramfs -k all -u 2>&1 | grep 'not found in /etc/crypttab'; then
+        label="$(cat /etc/crypttab | grep luks | awk '{printf $1;}')"
+        >&2 echo -e "\033[1;31mFailed to update-initramfs. While unlocking LUKS partition on next boot with cryptsetup luksOpen, use '$label' as mapping name.\033[0m"
+        ramfs_updated=false
+    fi
+fi
+
+
+if $ramfs_updated && [ -z "$(ls -A ~/.config/init)" ]; then
     rm -rf ~/.config/init
     rm README.md
     rm -- "$0"
-    rm setup.log
+    #rm .finalization.log
     sed -i -z 's/# START_finalize.*# END_finalize//' .bashrc
 fi
 
@@ -100,10 +111,11 @@ if ! $running_live; then
         sed -i "s/$USER/$newu/g" .cwd 2>/dev/null
 
         # GPG
+        echo -e "\n\n================================ GPG ================================\n" >> .finalization.log
+        chown -R "$USER" ~/.gnupg
         sed -i "s/<name>/$newfn/" ~/.gnupg/genkey
         sed -i "s/<email>/$newmail/" ~/.gnupg/genkey
-        gpg --batch --gen-key ~/.gnupg/genkey
-        chown -R "$USER" ~/.gnupg
+        gpg --batch --gen-key ~/.gnupg/genkey >> .finalization.log 2>&1
         chmod 700 ~/.gnupg
         chmod 600 ~/.gnupg/*
         chmod 700 ~/.gnupg/*.d
@@ -118,8 +130,8 @@ if ! $running_live; then
             && mv /home/\"$USER\"/ /home/\"$newu\" \
             && echo \"$newu    ALL=(ALL:ALL) ALL\" > /etc/sudoers.d/\"$newu\" \
             && ([[ \"$update_root\" =~ ^[yY]$ ]] && echo -e \"$newu:$newpass\nroot:$newpass\" || echo \"$newu:$newpass\") | chpasswd"
-        ##
         
+
         sudo find / -xtype l -lname "*$USER*" -exec bash -c 'ln -nsf "$(readlink "$0" | sed s/$1/$2/g)" "$(echo "$0" | sed s/$1/$2/g)"' {} "$USER" "$newu" \; >/dev/null 2>&1
 
         sudo reboot

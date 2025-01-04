@@ -20,3 +20,8 @@ sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-buildx-plug
 
 docker compose version
 
+sudo usermod -aG docker "$USER"
+newgrp docker
+sudo systemctl stop docker
+sudo systemctl disable docker
+

@@ -4,6 +4,22 @@
 If you are getting errors (like apt upgrade failing),
 see scripts in the *~/.config/fixes* folder for possible fixes.
 
+## Encryption (LUKS)
+When choosing to encrypt a partition in the debian installer, on first boot you will land in busybox because of incomplete /etc/crypttab.\
+Steps to fix:
+
+1. `blkid` and isolate which partition is of **TYPE="crypto_LUKS"** (ex: */dev/sda5*)\
+    `<luks_partition>` is /dev/sda5\
+    `<partition_name>` is sda5
+2. `cryptsetup luksOpen <luks_partition> <partition_name>_crypt`
+3. `exit`
+4. Login with the default password
+5. Open a terminal with the keyboard shortcut 'Win+Enter', then 'Enter' to finalize setup
+6. `sudo update-initramfs -k all -u`
+7. If the previous step failed with a '*target not found in /etc/crypttab*':\
+    `label="$(cat /etc/crypttab | grep luks | awk '{printf $1;}')"; echo ${label%_crypt}`,\
+    then repeat the steps using this value as `<partition_name>`
+
 ## I3wm  
 i3wm is a dynamic window manager for X11, designed for efficiency and simplicity.  
 Config stored in **`~/.config/i3/config`**
